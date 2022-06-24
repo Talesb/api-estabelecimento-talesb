@@ -1,0 +1,161 @@
+{
+	"info": {
+		"_postman_id": "0376bc3a-921c-4cc9-a3ba-5986f6f51662",
+		"name": "api-estabelecimento",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "usuario-listar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/usuario/listar",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuario",
+						"listar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "usuario-validar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/usuario/validar?login=elberth&senha=123",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuario",
+						"validar"
+					],
+					"query": [
+						{
+							"key": "login",
+							"value": "elberth"
+						},
+						{
+							"key": "senha",
+							"value": "123"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "funcionario-listar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/funcionario/1/listar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"funcionario",
+						"1",
+						"listar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "estabelecimento-incluir",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Instituto Infnet\",\r\n    \"login\": \"elberth\",\r\n    \"senha\": \"123\",\r\n    \"cnpj\": \"99.673.757/0001-46\",\r\n    \"endereco\": \"R. São José, 90 - Centro, Rio de Janeiro - RJ, 20010-020\",\r\n    \"edTech\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/estabelecimento/incluir",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"estabelecimento",
+						"incluir"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "funcionario-incluir",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 91,\r\n    \"nome\": \"Instituto Moraes\",\r\n    \"login\": \"moraes\",\r\n    \"senha\": \"x23456789012\",\r\n    \"cpf\": \"23456789012\",\r\n    \"email\": \"23456789012@professor.com\",\r\n    \"telefone\": \"(21) 99601-6255\",\r\n    \"estabelecimento\": {\r\n        \"id\": \"139\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/funcionario/incluir",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"funcionario",
+						"incluir"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "usuario-excluir",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/usuario/2/excluir",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuario",
+						"2",
+						"excluir"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

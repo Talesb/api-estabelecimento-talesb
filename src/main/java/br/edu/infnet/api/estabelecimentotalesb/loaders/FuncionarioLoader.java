@@ -28,36 +28,41 @@ public class FuncionarioLoader implements ApplicationRunner {
 
 		System.out.println("Execução do Application Loader de Funcionarios");
 
-		String[] cpfs = { "16296859171", "30405682484", "70497717590" };
+		try {
+			String[] cpfs = { "16296859171", "30405682484", "70497717590" };
 
-		Estabelecimento estabelecimento = (Estabelecimento) this.usuarioService.validar("murilo", "andreia");
+			Estabelecimento estabelecimento = (Estabelecimento) this.usuarioService.validar("murilo", "andreia");
 
-		for (String cpf : cpfs) {
+			for (String cpf : cpfs) {
 
-			Funcionario funcionario = new Funcionario();
-			funcionario.setCpf(cpf);
-			funcionario.setEmail("func@" + cpf + "el.com.br");
-			funcionario.setTelefone("7126766552");
-			funcionario.setLogin("func" + cpf);
-			funcionario.setNome("Func_" + cpf);
-			funcionario.setSenha("1234");
+				Funcionario funcionario = new Funcionario();
+				funcionario.setCpf(cpf);
+				funcionario.setEmail("func@" + cpf + "el.com.br");
+				funcionario.setTelefone("7126766552");
+				funcionario.setLogin("func" + cpf);
+				funcionario.setNome("Func_" + cpf);
+				funcionario.setSenha("1234");
 
-			if (estabelecimento != null) {
-				funcionario.setEstabelecimento(estabelecimento);
+				if (estabelecimento != null) {
+					funcionario.setEstabelecimento(estabelecimento);
+				}
+				try {
+					funcionarioService.incluir(funcionario);
+					System.out.println(" Funcionario cadastrado com sucesso");
+				} catch (Exception e) {
+					System.out.println("[ERROR] Problemas ao cadastrar Funcionario: " + e.getMessage());
+				}
 			}
-			try {
-				funcionarioService.incluir(funcionario);
-				System.out.println(" Funcionario cadastrado com sucesso");
-			} catch (Exception e) {
-				System.out.println("[ERROR] Problemas ao cadastrar Funcionario: " + e.getMessage());
-			}
+
+			List<Funcionario> funcionarios = funcionarioService.obterLista(estabelecimento.getId());
+
+			funcionarios.stream().forEach(funcionario -> {
+				System.out.println(funcionario.getNome());
+			});
+		} catch (Exception e) {
+			System.out.println("[ERROR] Problemas ao cadastrar Funcionarios em lote: " + e.getMessage());
 		}
 
-		List<Funcionario> funcionarios = funcionarioService.obterLista(estabelecimento.getId());
-
-		funcionarios.stream().forEach(funcionario -> {
-			System.out.println(funcionario.getNome());
-		});
 	}
 
 }

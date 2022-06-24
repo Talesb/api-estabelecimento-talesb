@@ -28,10 +28,6 @@ public class UsuarioController {
 		this.usuarioService = usuarioService;
 	}
 
-//	@GetMapping(value = "/validar",produces = MediaType.APPLICATION_JSON_VALUE,consumes = MediaType.APPLICATION_JSON_VALUE)
-//	public Usuario validar(String login, String senha) {
-//		return this.usuarioService.validar(login, senha);
-//	}
 
 	@PostMapping(value = "/validar", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
 	public Usuario validar(@RequestBody ValidarDTO dto, HttpServletResponse response)  {

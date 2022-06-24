@@ -11,7 +11,7 @@ import br.edu.infnet.api.estabelecimentotalesb.model.service.UsuarioService;
 public class UsuarioLoader implements ApplicationRunner {
 
 	private UsuarioService usuarioService;
-	
+
 	public UsuarioLoader(UsuarioService usuarioService) {
 		this.usuarioService = usuarioService;
 	}
@@ -19,11 +19,14 @@ public class UsuarioLoader implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		System.out.println("Execução do Application Loader de Usuario");
-		
-		Usuario usuario = this.usuarioService.validar("func70497717590","1234");
-		usuarioService.excluir(usuario.getId());
-		
-		System.out.println("Exclusão do usuário "+ usuario.getLogin()+" realizada com sucesso");
+
+		Usuario usuario = this.usuarioService.validar("func70497717590", "1234");
+
+		if (usuario != null) {
+			usuarioService.excluir(usuario.getId());
+			System.out.println("Exclusão do usuário " + usuario.getLogin() + " realizada com sucesso");
+		}
+
 
 	}
 
