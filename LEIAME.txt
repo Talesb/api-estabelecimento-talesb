@@ -1,0 +1,5 @@
+https://trello.com/b/StScO6hm/2-api
+
+Criar outro projeto api-votacao
+- Criar API de CRUD de Votos,eleitores e eleição.
+- Criar a collection e adicionar no repositório.
