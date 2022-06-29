@@ -1,7 +1,5 @@
 package br.edu.infnet.api.estabelecimentotalesb.loaders;
 
-import java.util.List;
-
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -47,18 +45,18 @@ public class FuncionarioLoader implements ApplicationRunner {
 					funcionario.setEstabelecimento(estabelecimento);
 				}
 				try {
-					funcionarioService.incluir(funcionario);
+//					funcionarioService.incluir(funcionario);
 					System.out.println(" Funcionario cadastrado com sucesso");
 				} catch (Exception e) {
 					System.out.println("[ERROR] Problemas ao cadastrar Funcionario: " + e.getMessage());
 				}
 			}
 
-			List<Funcionario> funcionarios = funcionarioService.obterLista(estabelecimento.getId());
+//			List<Funcionario> funcionarios = funcionarioService.obterLista(estabelecimento.getId());
 
-			funcionarios.stream().forEach(funcionario -> {
-				System.out.println(funcionario.getNome());
-			});
+//			funcionarios.stream().forEach(funcionario -> {
+//				System.out.println(funcionario.getNome());
+//			});
 		} catch (Exception e) {
 			System.out.println("[ERROR] Problemas ao cadastrar Funcionarios em lote: " + e.getMessage());
 		}

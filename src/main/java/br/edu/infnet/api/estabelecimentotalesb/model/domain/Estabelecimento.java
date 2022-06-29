@@ -12,6 +12,8 @@ import javax.persistence.UniqueConstraint;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
+import br.edu.infnet.api.estabelecimentotalesb.model.domain.dto.EstabelecimentoDTO;
+
 @Entity
 @Table(name = "TEstabelecimento", uniqueConstraints = @UniqueConstraint(columnNames = { "cnpj" }))
 public class Estabelecimento extends Usuario {
@@ -55,6 +57,31 @@ public class Estabelecimento extends Usuario {
 
 	public void setFuncionarios(List<Funcionario> funcionarios) {
 		this.funcionarios = funcionarios;
+	}
+
+	public EstabelecimentoDTO toDTO() {
+		EstabelecimentoDTO dto = new EstabelecimentoDTO();
+		dto.setCnpj(cnpj);
+		dto.setEdtech(edtech);
+		dto.setEndereco(endereco);
+		dto.setId(getId());
+		dto.setLogin(this.getLogin());
+		dto.setSenha(this.getSenha());
+		if (this.funcionarios != null) {
+			dto.setQtdFuncionarios(this.funcionarios.size());
+		}
+		return dto;
+	}
+	
+	
+	public static Estabelecimento toEstabelecimento(EstabelecimentoDTO dto ) {
+		Estabelecimento estabelecimento = new Estabelecimento();
+		estabelecimento.setCnpj(dto.getCnpj());
+		estabelecimento.setEndereco(dto.getEndereco());
+		estabelecimento.setEdtech(dto.isEdtech());
+		estabelecimento.setLogin(dto.getLogin());
+		estabelecimento.setSenha(dto.getSenha());
+		return estabelecimento;
 	}
 
 }

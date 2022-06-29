@@ -18,20 +18,20 @@ public class EstabelecimentoLoader implements ApplicationRunner {
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		System.out.println("Execução do Application Loader de Estabelecimento");
-		Estabelecimento establecimento = new Estabelecimento();
-		establecimento.setCnpj("79889012000179");
-		establecimento.setEdtech(false);
-		establecimento.setEndereco("São Bernardo do Campo");
-		establecimento.setLogin("murilo");
-		establecimento.setNome("Murilo e Andreia Informática Ltda");
-		establecimento.setSenha("andreia");
-		try {
-			estabelecimentoService.incluir(establecimento);
-			System.out.println("Loader de Estabelecimento executado com sucesso");
-		} catch (Exception e) {
-			System.out.println("[ERROR] Problemas ao executar loader de Estabelecimento: " + e.getMessage());
-		}
+//		System.out.println("Execução do Application Loader de Estabelecimento");
+//		Estabelecimento establecimento = new Estabelecimento();
+//		establecimento.setCnpj("79889012000179");
+//		establecimento.setEdtech(false);
+//		establecimento.setEndereco("São Bernardo do Campo");
+//		establecimento.setLogin("murilo");
+//		establecimento.setNome("Murilo e Andreia Informática Ltda");
+//		establecimento.setSenha("andreia");
+//		try {
+//			estabelecimentoService.incluir(establecimento);
+//			System.out.println("Loader de Estabelecimento executado com sucesso");
+//		} catch (Exception e) {
+//			System.out.println("[ERROR] Problemas ao executar loader de Estabelecimento: " + e.getMessage());
+//		}
 
 	}
 

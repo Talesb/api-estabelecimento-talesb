@@ -9,6 +9,8 @@ import javax.persistence.UniqueConstraint;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import br.edu.infnet.api.estabelecimentotalesb.model.domain.dto.FuncionarioDTO;
+
 @Entity
 @Table(name = "TFuncionario", uniqueConstraints = @UniqueConstraint(columnNames = { "cpf" }))
 public class Funcionario extends Usuario {
@@ -52,6 +54,20 @@ public class Funcionario extends Usuario {
 
 	public void setEstabelecimento(Estabelecimento estabelecimento) {
 		this.estabelecimento = estabelecimento;
+	}
+
+	public static Funcionario toFuncionario(FuncionarioDTO funcionarioDTO) {
+
+		Funcionario funcionario = new Funcionario();
+		funcionario.setLogin(funcionarioDTO.getLogin());
+		funcionario.setSenha(funcionarioDTO.getSenha());
+		funcionario.setNome(funcionarioDTO.getSenha());
+		funcionario.setCpf(funcionarioDTO.getCpf());
+		funcionario.setTelefone(funcionarioDTO.getTelefone());
+		funcionario.setEmail(funcionarioDTO.getEmail());
+
+		return funcionario;
+
 	}
 
 }

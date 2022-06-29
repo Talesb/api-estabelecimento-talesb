@@ -2,6 +2,7 @@ package br.edu.infnet.api.estabelecimentotalesb.controller;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.infnet.api.estabelecimentotalesb.model.domain.Funcionario;
-import br.edu.infnet.api.estabelecimentotalesb.model.dto.FuncionarioDTO;
+import br.edu.infnet.api.estabelecimentotalesb.model.domain.dto.FuncionarioDTO;
 import br.edu.infnet.api.estabelecimentotalesb.model.service.FuncionarioService;
 
 @RestController
@@ -23,19 +24,24 @@ public class FuncionarioController {
 		this.funcionarioService = funcionarioService;
 	}
 
-	@PostMapping(value="/incluirdto")
- 	public void incluirViaDTO(@RequestBody FuncionarioDTO funcionario) throws Exception {
-		this.funcionarioService.incluir(funcionario);
-	}
-	
-	@PostMapping(value="/incluir")
-	public void incluir(@RequestBody Funcionario funcionario) throws Exception {
+	@PostMapping(value = "/incluir")
+	public void incluirViaDTO(@RequestBody FuncionarioDTO funcionario) throws Exception {
 		this.funcionarioService.incluir(funcionario);
 	}
 
-	@GetMapping(value = "/{idEstabelecimento}/listar")
-	public List<Funcionario> obterLista(@PathVariable Integer idEstabelecimento) {
-		return this.funcionarioService.obterLista(idEstabelecimento);
+	@GetMapping(value = "/estabelecimento/{idEstabelecimento}")
+	public List<Funcionario> obterListaPorEstabelecimento(@PathVariable Integer idEstabelecimento) {
+		return this.funcionarioService.obterListaPorEstabelecimento(idEstabelecimento);
+	}
+
+	@GetMapping
+	public List<Funcionario> obterLista() {
+		return this.funcionarioService.obterLista();
+	}
+
+	@DeleteMapping(value="/{idEstabelecimento}")
+	public void remover(@PathVariable Integer idEstabelecimento) {
+		this.funcionarioService.remover(idEstabelecimento);
 	}
 
 }
