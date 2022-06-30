@@ -8,7 +8,8 @@ public class FuncionarioDTO {
 	private String email;
 	private String telefone;
 	private Integer estabelecimentoId;
-	private Integer nomeEstabelecimento;
+	private String nomeEstabelecimento;
+	private String nome;
 
 	public Integer getId() {
 		return id;
@@ -50,14 +51,6 @@ public class FuncionarioDTO {
 		this.estabelecimentoId = estabelecimentoId;
 	}
 
-	public Integer getNomeEstabelecimento() {
-		return nomeEstabelecimento;
-	}
-
-	public void setNomeEstabelecimento(Integer nomeEstabelecimento) {
-		this.nomeEstabelecimento = nomeEstabelecimento;
-	}
-
 	public String getLogin() {
 		return login;
 	}
@@ -74,6 +67,20 @@ public class FuncionarioDTO {
 		this.senha = senha;
 	}
 
-	
-	
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getNomeEstabelecimento() {
+		return nomeEstabelecimento;
+	}
+
+	public void setNomeEstabelecimento(String nomeEstabelecimento) {
+		this.nomeEstabelecimento = nomeEstabelecimento;
+	}
+
 }

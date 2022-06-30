@@ -2,6 +2,7 @@ package br.edu.infnet.api.estabelecimentotalesb.model.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -24,16 +25,21 @@ public class FuncionarioService {
 		this.estabelecimentoRepository = estabelecimentoRepository;
 	}
 
-	public List<Funcionario> obterListaPorEstabelecimento(Integer idEstabelecimento) {
-		return this.funcionarioRepository.obterLista(idEstabelecimento);
+	public List<FuncionarioDTO> obterListaPorEstabelecimento(Integer idEstabelecimento) {
+		return this.funcionarioRepository.obterLista(idEstabelecimento).stream().map(func -> func.toDTO())
+				.collect(Collectors.toList());
 	}
 
-	public List<Funcionario> obterLista() {
-		return (List<Funcionario>) this.funcionarioRepository.findAll();
+	public List<FuncionarioDTO> obterLista() {
+		return ((List<Funcionario>) this.funcionarioRepository.findAll()).stream().map(func -> func.toDTO())
+				.collect(Collectors.toList());
 	}
 
-	public Funcionario obterById(Integer idfuncionario) {
-		return this.funcionarioRepository.findById(idfuncionario).orElse(null);
+	public FuncionarioDTO obterById(Integer idfuncionario) {
+		if (this.funcionarioRepository.findById(idfuncionario).isPresent()) {
+			return this.funcionarioRepository.findById(idfuncionario).get().toDTO();
+		}
+		return null;
 	}
 
 	public void incluir(FuncionarioDTO funcionariodto) throws Exception {

@@ -9,6 +9,7 @@ import javax.persistence.UniqueConstraint;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import br.edu.infnet.api.estabelecimentotalesb.model.domain.dto.EstabelecimentoDTO;
 import br.edu.infnet.api.estabelecimentotalesb.model.domain.dto.FuncionarioDTO;
 
 @Entity
@@ -68,6 +69,23 @@ public class Funcionario extends Usuario {
 
 		return funcionario;
 
+	}
+
+	public FuncionarioDTO toDTO() {
+		FuncionarioDTO dto = new FuncionarioDTO();
+		dto.setCpf(cpf);
+		dto.setId(getId());
+		dto.setLogin(this.getLogin());
+		dto.setSenha(this.getSenha());
+		dto.setNome(this.getNome());
+		dto.setTelefone(telefone);
+		dto.setEmail(email);
+
+		if (this.estabelecimento != null) {
+			dto.setEstabelecimentoId(this.estabelecimento.getId());
+			dto.setNomeEstabelecimento(this.estabelecimento.getNome());
+		}
+		return dto;
 	}
 
 }

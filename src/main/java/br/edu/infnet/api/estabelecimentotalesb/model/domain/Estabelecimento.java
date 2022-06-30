@@ -67,6 +67,8 @@ public class Estabelecimento extends Usuario {
 		dto.setId(getId());
 		dto.setLogin(this.getLogin());
 		dto.setSenha(this.getSenha());
+		dto.setNome(this.getNome());
+		
 		if (this.funcionarios != null) {
 			dto.setQtdFuncionarios(this.funcionarios.size());
 		}
@@ -81,6 +83,7 @@ public class Estabelecimento extends Usuario {
 		estabelecimento.setEdtech(dto.isEdtech());
 		estabelecimento.setLogin(dto.getLogin());
 		estabelecimento.setSenha(dto.getSenha());
+		estabelecimento.setNome(dto.getNome());
 		return estabelecimento;
 	}
 

@@ -30,12 +30,12 @@ public class FuncionarioController {
 	}
 
 	@GetMapping(value = "/estabelecimento/{idEstabelecimento}")
-	public List<Funcionario> obterListaPorEstabelecimento(@PathVariable Integer idEstabelecimento) {
+	public List<FuncionarioDTO> obterListaPorEstabelecimento(@PathVariable Integer idEstabelecimento) {
 		return this.funcionarioService.obterListaPorEstabelecimento(idEstabelecimento);
 	}
 
 	@GetMapping
-	public List<Funcionario> obterLista() {
+	public List<FuncionarioDTO> obterLista() {
 		return this.funcionarioService.obterLista();
 	}
 

@@ -4,6 +4,7 @@ public class EstabelecimentoDTO {
 
 	private Integer id;
 	private String login;
+	private String nome;
 	private String senha;
 	private String cnpj;
 	private String endereco;
@@ -51,6 +52,12 @@ public class EstabelecimentoDTO {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	public String getNome() {
+		return nome;
+	}
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 	
 	
